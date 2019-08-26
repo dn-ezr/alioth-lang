@@ -18,8 +18,8 @@ div.floater span{
 }
 </style>
 <span style="background:#FFFFFF;color:#000000;">Object Oriented</span>
-<span style="background:#FEFEFE;color:#4D4C4B;">Quasi Method</span>
 <span style="background:#3B3C3D;color:#CDCCCB;">Strongly Typed</span>
+<span style="background:#FEFEFE;color:#4D4C4B;">Quasi Method</span>
 <span style="background:#000000;color:#FFFFFF">Inverse Overriding</span>
 </div>
 
