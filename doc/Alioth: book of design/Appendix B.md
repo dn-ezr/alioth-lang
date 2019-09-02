@@ -18,6 +18,7 @@ This page is used to describe features in comming. They are only thoughts in my 
   - [Method entity structure](#method-entity-structure)
   - [Dependency set in module signature](#dependency-set-in-module-signature)
   - [Overriding methods by changing return prototype](#overriding-methods-by-changing-return-prototype)
+  - [Leave away any scope immediatly](#leave-away-any-scope-immediatly)
 
 ## Combined concepts
 
@@ -99,4 +100,22 @@ Example:
 
 ~~~
 getDocument?string( "source.alioth" );
+~~~
+
+## Leave away any scope immediatly
+
+Use the combined keyword `break!` to change the semantics of the statement `break`.
+
+The combined keyword `break!` means to leave the scope which is the one most close to the break statement.
+
+**The scope without brackets will be skipped when detecting scopes to break.**
+
+Example:
+
+~~~
+if( condition ) {
+    execute_something();
+    if( not_going_on ) break!;
+    something_going_on();
+}
 ~~~
