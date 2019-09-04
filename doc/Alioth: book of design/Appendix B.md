@@ -19,6 +19,7 @@ This page is used to describe features in comming. They are only thoughts in my 
   - [Dependency set in module signature](#dependency-set-in-module-signature)
   - [Overriding methods by changing return prototype](#overriding-methods-by-changing-return-prototype)
   - [Leave away any scope immediatly](#leave-away-any-scope-immediatly)
+  - [Break or continue one block after doing something](#break-or-continue-one-block-after-doing-something)
 
 ## Combined concepts
 
@@ -117,5 +118,19 @@ if( condition ) {
     execute_something();
     if( not_going_on ) break!;
     something_going_on();
+}
+~~~
+
+## Break or continue one block after doing something
+
+If you want to break or continue a block, but there's something has to be done before that, use the promise `after` to combine them to be one statement.
+
+Example:
+
+~~~
+loop i on data_set : {
+    do_something();
+    if( condition_to_break )
+        break after clean();
 }
 ~~~
