@@ -4,7 +4,7 @@ The Alioth programming language is a new choise of method to implement software 
 
 ![](res/img/icon_with_text.png)
 
-Alioth is a programming language of compiled, static, strongly typed, who provides plenty of features for you to reduce cost of programming.
+Alioth is a programming language of compiled, static, strongly typed, who provides plenty of features for you to decrease cost of programming.
 
 <div class="floater" style="width:100%;height:32px;padding-left:64px;">
 <style>

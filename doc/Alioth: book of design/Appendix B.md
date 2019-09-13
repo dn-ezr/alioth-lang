@@ -109,7 +109,7 @@ Use the combined keyword `break!` to change the semantics of the statement `brea
 
 The combined keyword `break!` means to leave the scope which is the one most close to the break statement.
 
-**The scope without brackets will be skipped when detecting scopes to break.**
+<u>**The scope without brackets will be skipped when detecting scopes to break.**</u>
 
 Example:
 
