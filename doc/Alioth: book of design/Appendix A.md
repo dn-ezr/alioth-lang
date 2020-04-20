@@ -189,7 +189,7 @@ To construct step loop, use this format.
 #### iterating loop
 
 ~~~
-loop /* iterator */ on /* container */ : /* do something */
+loop /* iterator */ on /* container */ do /* do something */
 ~~~
 
 This format is used to iterate containers.

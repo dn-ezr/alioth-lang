@@ -20,6 +20,7 @@ This page is used to describe features in comming. They are only thoughts in my 
   - [Overriding methods by changing return prototype](#overriding-methods-by-changing-return-prototype)
   - [Leave away any scope immediatly](#leave-away-any-scope-immediatly)
   - [Break or continue one block after doing something](#break-or-continue-one-block-after-doing-something)
+  - [Extensible classes](#extensible-classes)
 
 ## Combined concepts
 
@@ -134,3 +135,77 @@ loop i on data_set : {
         break after clean();
 }
 ~~~
+
+## Extensible classes
+
+Whether the structure of one object is constrained to the data type it obeys is one of the major difference between strongly typed and weakly typed languages.
+
+For example, the `php` language can do this:
+
+~~~php
+class Package {
+    public $action;
+    public $title;
+
+    public function __construct( $action, $title ) {
+        $this->$action = $action;
+        $this->title = $title;
+    }
+}
+
+$package = new Package('request', 'login');
+$package->username = 'GodGnidoc';
+$package->password = 'password';
+~~~
+
+But the strongly typed languages like `C++` or `Java` cannot operate attributes that objects doesn't own before.
+
+The Alioth programming language is strongly typed language, but we can also support some features that only weakly typed languages had.
+
+You may mark the class with `...` which means that this class is extensible, and may contains one or more extended attributes.
+
+Example:
+
+- Definition:
+  ~~~alioth
+  class Package {
+      var action string
+      var title string
+      ...
+
+      method meta RequestLogin( username string, password string ) Package
+  }
+  ~~~
+
+- Implementation:
+  ~~~alioth
+  method meta Package::RequestLogin( username string, password string ) Package {
+      var package = { class Package
+          action: 'request',
+          title: 'login'
+      }
+      package.username = username
+      var package.password = password
+      return package
+  }
+  ~~~
+
+There will be two methods you can extend the object of the extensible type. These two methods are all about how you tell the compiler to setup a new association between the extended attribute name and the extended attribute unit, which association will be stored in the hidden hash map in the extensible object.
+
+- Assignment form  
+  The first one is formed like a directly assignment operation, which can only be used to construct `obj` or `ptr` attribute.
+
+  If the extended attribute is set already, the desctruct operation is called automatically.
+
+  ~~~
+  package.username = username
+  ~~~
+
+- Fake definition form  
+  The second one is formed like a element statement, the difference is the name of this element is a name-expression points to the extended attribute.
+
+  ~~~
+  var package.password = password
+  ~~~
+
+To use the extended attribute, just throw it into the `assume` statement, assume the prototype and execute your task.

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+            table, tr, td, th {
+                text-align: center;
+                border: 1px solid darkgray;
+            }
+            tr.mid > td {
+                line-height: 1rem;
+                height: 1.25rem;
+                padding: 5px 5px;
+            }
+            body, html, div {
+                height:100%;
+            }
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <table>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th colspan="8">7</th>
+                    <th>6</th>
+                    <th colspan="8">5</th>
+                    <th colspan="8">4</th>
+                    <th colspan="4">3 ... 0</th>
+                </tr>
+                <tr class='mid'>
+                    <td>&nbsp;</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7 ... 0</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7 ... 0</td>
+                    <td>7 ... 0</td>
+                    <td>7 ... 0</td>
+                    <td>7 ... 0</td>
+                </tr>
+                <tr>
+                    <td>+ 0x00 Byte</td>
+                    <td colspan="2">type</td>
+                    <td>static</td>
+                    <td>const</td>
+                    <td>atomic</td>
+                    <td>async / isomorphic</td>
+                    <td>reverse / suffix</td>
+                    <td colspan="6">&nbsp;</td>
+                    <td colspan="12">length</td>
+                    <td colspan="4">typeid</td>
+                </tr>
+                <tr>
+                    <td>+ 0x08 Bytes</td>
+                    <td colspan="34">pointer / offset</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

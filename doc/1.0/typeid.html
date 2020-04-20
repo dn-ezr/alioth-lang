@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+            table, tr, td, th {
+                text-align: center;
+                border: 1px solid darkgray;
+            }
+            tr.mid > td {
+                line-height: 1rem;
+                height: 1.25rem;
+                padding: 5px 5px;
+            }
+            body, html, div {
+                height:100%;
+            }
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <table>
+                <tr>
+                    <th>Comment</th>
+                    <th colspan="8">3</th>
+                    <th colspan="8">2</th>
+                    <th colspan="8">1</th>
+                    <th colspan="8">0</th>
+                </tr>
+                <tr class='mid'>
+                    <td>&nbsp;</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                    <td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+                </tr>
+                <tr>
+                    <th>Basic data type</th>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="8">&nbsp;</td>
+                    <td colspan="16">basic type id</td>
+                </tr>
+                <tr>
+                    <th>Function type</th>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="8">&nbsp;</td>
+                    <td colspan="16">function type id</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">Struct type</th>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="8">&nbsp;</td>
+                    <td colspan="16">unnamed struct type id</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="8">&nbsp;</td>
+                    <td colspan="16">named struct type id</td>
+                </tr>
+                <tr>
+                    <th>Pointer type</th>
+                    <td>0</td>
+                    <td>1</td>
+                    <td colspan="2">target type</td>
+                    <td>&nbsp;</td>
+                    <td colspan="3">pointer level</td>
+                    <td colspan="8">pointer constraint</td>
+                    <td colspan="16">target type id</td>
+                </tr>
+                <tr>
+                    <th>Interface type</th>
+                    <td>1</td>
+                    <td colspan="3">target type</td>
+                    <td colspan="28">interface type id</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

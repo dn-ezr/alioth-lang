@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html style="width: 100%;text-align: center;">
+    <head>
+        <title>Scope Model of Syntax Tree</title>
+        <style>
+            div {
+                border-radius: 0.875em;
+                background: lightgray;
+                border: 2px solid gray;
+                color: gray;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-bottom: 4px;
+                margin:1px;
+                float: left;
+                min-width: 4em;
+                text-align: center;
+                font-weight: 900;
+            }
+            div > p {
+                color: inherit;
+                font-weight: inherit;
+            }
+            code {
+                color:blueviolet;
+            }
+            div.path > div {
+                float:none;
+            }
+            ul {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body style="align-content: center;text-align: center;width:fit-content;margin: 0 auto;">
+        <p>The picture displayed below, shows the scope vision of certen syntax tree.</p>
+        <p>Those blocks with dark background are syntax structures flat, they share their scope with their children</p>
+        <p>Some syntax structures do nothing but transport requests up and down, they were removed from this picture since they are transparent with syntax requests</p>
+        <div style="margin:0 auto;float: none;overflow: hidden;">
+            <p><code>modesc</code> represents the Module </p>
+            <div>
+                <p><code>depdesc</code> as one of the dependencies</p>
+            </div>
+            <div>
+                <p><code>ClassDef</code>as one of the definitions</p>
+                <div>
+                    <p><code>morpheme::attribute</code></p>
+                </div>
+                <div>
+                    <p><code>morpheme::attribute</code></p>
+                </div>
+                <div>
+                    <p><code>MethodDef</code></p>
+                </div>
+            </div>
+            <div>
+                <p><code>MethodImpl</code> as one of the implementations</p>
+                <div>
+                    <p><code>ConstructImpl</code> as parameter</p>
+                </div>
+                <div>
+                    <p><code>ConstructImpl</code> as parameter</p>
+                </div>
+                <div>
+                    <p><code>InsBlockImpl</code> as body</p>
+                    <div>
+                        <p><code>ConstructImpl</code></p>
+                    </div>
+                    <div>
+                        <p><code>ConstructImpl</code></p>
+                    </div>
+                    <div>
+                        <p><code>BranchImpl</code></p>
+                        <div>
+                            <p><code>ExpressionImpl</code> as condition expression</p>
+                        </div>
+                        <div>
+                            <p><code>InsBlockImpl</code> as first branch</p>
+                            <div><p><code>ExpressionImpl</code></p></div>
+                            <div><p><code>ExpressionImpl</code></p></div>
+                        </div>
+                        <div>
+                            <p><code>LoopImpl</code> as second branch</p>
+                            <div><p><code>ExpressionImpl</code></p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>The corresponding source code written in <code>Alioth</code> are showen like this: </p>
+        <pre style="text-align:left;margin:0 auto;border:1px solid black;border-radius: 5px;width:fit-content;padding:1em;">
+module iTalk : 
+    io as this
+
+class iTalk {
+    var name string
+    var lang Lang
+
+    method doSomeThing( arg1 int32, arg2 **int8 ) void
+}
+
+method iTalk::doSomeThing( arg1 int32, arg2 Chating ) void {
+
+    var peer Peer;
+    var topic Topic;
+
+    if( arg1 > arg2.size ) {
+        SayHi();
+        SayGoodBy();
+    } else loop {
+        Call666();
+    }
+}
+        </pre>
+        <p>The action <code>request</code> follows the path which is shown below</p>
+        <div class="path" style="float:none;margin:0 auto;width:fit-content;overflow:hidden;">
+            <div>
+                <code>modesc <code style="color:blue;">aka</code> transparent class</code>
+                <p>look up definitions</p>
+                <p>look up dependencies</p>
+            </div>
+            <div style="border-style: dashed;">
+                <code>ClassDef</code>
+                <p>Scope of class definition was by pased</p>
+            </div>
+            <div>
+                <p style="font-weight:900;">.<br/>.<br/>.</p>
+            </div>
+            <div style="border-style: dashed;">
+                <code>ClassDef</code>
+                <p>Scope of class definition was by pased</p>
+            </div>
+            <div>
+                <code>ClassDef</code>
+                <p>look up attributes of <code>this class</code></p>
+                <p>look up methods of <code>this class</code></p>
+                <ul>
+                    <li><code>Meta Attribute</code></li>
+                    <li><code>Meta Method</code></li>
+                    <li><code>None-meta Attribute</code></li>
+                    <li><code>None-meta Method</code></li>
+                </ul>
+            </div>
+            <div>
+                <code>MethodImpl</code>
+                <p>look up parameters</p>
+                <ul>
+                    <li><code>Parameter Element</code></li>
+                </ul>
+                <code> </code>
+            </div>
+            <div>
+                <code>InsBlockImpl</code>
+                <p>look up local element</p>
+                <ul>
+                    <li>
+                        <code>Auto Element</code>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <p style="font-weight:900;">.<br/>.<br/>.</p>
+            </div>
+            <div>
+                <code>InsBlockImpl</code>
+                <p>look up local element</p>
+                <ul>
+                    <li>
+                        <code>Auto Element</code>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <code>ExpressioImpl</code>
+                <p>request starts from here</p>
+                <ul>
+                    <li><code>a</code></li>
+                    <li><code>b.a</code></li>
+                    <li><code>c.b.a</code></li>
+                    <li><code>&lt;expr&gt;.a</code></li>
+                    <li><code>d::c.b.a</code></li>
+                    <li><code>c::b.a</code></li>
+                    <li><code>c::b</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>The <code>transparent class</code> should exist in any case and be generated by compiler automatically when they are left not written when programmer were editing code</p>
+        <p>We should treat stuffs written in the transparent class and in the module in the same way, so we should collect all definitions into transparent class at the stage of semantic validation</p>
+        <script>
+            var divs = document.getElementsByTagName("div");
+            for( var div of divs ) {
+                if( div.children.length == 1 ) {
+                    div.style += ";border-color: lightgray; background : gray; color : lightgray;"
+                }
+            }
+        </script>
+    </body>
+</html>
